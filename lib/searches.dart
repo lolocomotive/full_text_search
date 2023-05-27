@@ -1,8 +1,7 @@
 // ignore_for_file: omit_local_variable_types
 import 'dart:core';
 
-import 'package:logging/logging.dart';
-import 'package:sunny_dart/sunny_dart.dart' hide Token;
+import 'package:full_text_search/extensions.dart';
 
 import 'matching.dart';
 import 'scoring.dart';
@@ -123,8 +122,6 @@ class FullTextSearch<T> {
     matchers.sort();
   }
 
-  final log = Logger('termSearch');
-
   /// Executes a search and finds the results.  See also [execute]
   Future<List<T>> findResults() async {
     List<T> result;
@@ -202,7 +199,6 @@ class FullTextSearch<T> {
         matchedTokens,
         matchedTerms.length >= terms.length,
       );
-      log.fine('Scorers: $scorers');
       search.scorers.forEach(
           (scorer) => scorer.scoreTerm(search, termResult, termResult.score));
       termResult.scoreValue;

@@ -53,16 +53,12 @@ class TermSearchResult<T> extends Equatable
 
   @override
   int compareTo(lhs) {
-    if (lhs is TermSearchResult<T>) {
-      final rhs = this;
-      if (lhs == rhs) return 0;
-      var scoreA = rhs.scoreValue;
-      var scoreB = lhs.scoreValue;
-      if (scoreA == 0 && scoreB == 0) return 1;
-      return scoreB.compareTo(scoreA);
-    } else {
-      return -1;
-    }
+    final rhs = this;
+    if (lhs == rhs) return 0;
+    var scoreA = rhs.scoreValue;
+    var scoreB = lhs.scoreValue;
+    if (scoreA == 0 && scoreB == 0) return 1;
+    return scoreB.compareTo(scoreA);
   }
 
   @override
